@@ -1,0 +1,28 @@
+load("@rules_cc//cc:defs.bzl", "cc_library")
+
+_public_hdrs = [
+    "include/boost/*.hpp",
+    "include/boost/date_time/*.hpp",
+    "include/boost/date_time/gregorian/*.hpp",
+    "include/boost/date_time/local_time/*.hpp",
+    "include/boost/date_time/posix_time/*.hpp",
+]
+
+cc_library(
+    name = "date_time_internal",
+    hdrs = glob(["include/boost/**/*"], exclude = _public_hdrs),
+)
+
+cc_library(
+    name = "date_time",
+    visibility = ["//visibility:public"],
+    includes = ["include"],
+    hdrs = glob(_public_hdrs),
+    deps = [
+        ":date_time_internal",
+        "@boost//utility",
+        "@boost//static_assert",
+        "@boost//type_traits",
+        "@boost//numeric_conversion",
+    ],
+)
