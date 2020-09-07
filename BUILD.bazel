@@ -11,6 +11,10 @@ _public_hdrs = [
 cc_library(
     name = "date_time_internal",
     hdrs = glob(["include/boost/**/*"], exclude = _public_hdrs),
+    srcs = glob(["libs/date_time/src/**/*.cpp"], exclude = [
+        "libs/date_time/src/gregorian/greg_weekday.cpp",
+        "libs/date_time/src/gregorian/date_generators.cpp",
+    ]),
 )
 
 cc_library(
