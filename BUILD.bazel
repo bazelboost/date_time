@@ -21,6 +21,7 @@ cc_library(
     name = "date_time",
     visibility = ["//visibility:public"],
     includes = ["include"],
+    defines = ["BOOST_ALL_NO_LIB"],
     hdrs = glob(_public_hdrs),
     deps = [
         ":date_time_internal",
