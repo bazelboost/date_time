@@ -28,5 +28,8 @@ cc_library(
         "@boost//static_assert",
         "@boost//type_traits",
         "@boost//numeric_conversion",
+        "@boost//throw_exception",
+        "@boost//algorithm",
+        "@boost//lexical_cast",
     ],
 )
